@@ -1,0 +1,60 @@
+
+
+# Creating a transformation
+
+
+## Write a XSL stylesheet
+
+-   Don't reinvent the wheel. Copy an existing stylesheet and modify that to meet the requirements of the new provider or collection.
+    -   Provider names are often hard-coded
+-   When you write a template, consider whether you are solving a problem for this one provider or whether this might be useful with multiple providers. If just this institution, put the template in the provider stylesheet. If generally useful, put it in odn<sub>templates.xsl</sub>.
+-   Re-use code as often as possible.
+
+
+## Create a transformation in Repox
+
+-   Click on "MDR" in the top window menu bar.
+-   Click on "New Transformation" in the menu bar.
+-   In the resulting dialog box:
+    -   give the transform an identifier. I recommend using the set id followed by an underscore and the form inputFormatTooutputFormat in "camel case", ex: p16998coll11<sub>oaiQdcTooaiQdc</sub>
+    -   enter a more human-readable description like: Cincinnati Public Library Dochterman Collection
+    -   pick the source format. This will be the format you harvested from the provider. ex: 'oai<sub>qdc</sub>'
+    -   pick the destination format. This will be the format into which your stylesheet transforms the incoming format. ex: 'qdc' This is also the format that DPLA will harvest from you, so it will be the same across all your transforms.
+    -   click the "XSL version 2?" checkbox. All your stylesheets will be XSL version 2.
+    -   Click on the "Browse&#x2026;" button next to the "Transformation File (XSL)" field.
+        -   In the dialog box pick the XSLT stylesheet you created. The path in the box will read "C:/fakepath/<name of file>"
+    -   Hit "Save" to upload the stylesheet and save the transformation.
+
+
+## Associate the data set and the transformation
+
+-   Click "Home" to go back to the Repox home screen.
+-   Select the data set with which to associate the transformation (if it's not already still selected.)
+-   Click on "Manage Data Set" in the menu and select "Edit Data Set"
+-   In the Transformations section towards the bottom of the resulting dialog, click the "Add" button at the top of the list.
+-   In the resulting dialog box, find the transformation you just created.
+-   Click the checkbox next to it
+-   Click "Add Selected"
+-   Back in the "Edit Data Set" dialog, the selected transform now appears in the list of transforms for the data set.
+-   Click "Save."
+
+
+## Check the output of the transform
+
+-   In the "OAI-PMH Schemas" column, to the right, you should now see a link with the format corresponding to your transform output. Clicking it will open a new window with the transformed metadata where you can check for errors or problems.
+
+
+## Editing considerations
+
+
+### The "C:/fakepath/" trick
+
+-   Seldom does a stylesheet work on the first try without tweaking. It is best to use an editor like Oxygen XML developer to test transforms locally before uploading them to Repox.
+-   After having made edits to a stylesheet, you will have to upload the stylesheet to the server again. Editing the transformation is much like creating it, except there is a quirk you need to watch out for.
+    -   Click on "MDR" in the top window menu bar.
+    -   Select your transformation and then click "Edit Transformation" in the menu bar.
+    -   In the dialog box:
+        -   Click on the "Browse&#x2026;" button next to the "Transformation File (XSL)" field.
+        -   In the dialog box pick the XSLT stylesheet you created. The path in the box must read "C:/fakepath/<name of file>." If it doesn't, the file will not upload. Sometimes if you pick the edited file it will NOT be prepended with "C:/fakepath/." To get around this, pick any other file first. Check to see if the "C:/fakepath/" is prepended to the file, and if so, click the "Browse" button AGAIN, and this time select the edited stylesheet. Now it should have "C:/fakepath" prepended to it.
+        -   Hit "Save" to upload the stylesheet and save the transformation.
+
