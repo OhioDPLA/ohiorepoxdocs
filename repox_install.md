@@ -49,4 +49,8 @@ You need a AWS instance running Amazon Linux. The machine should have 8gb of mem
 
 - You can now check that the system is running by opening [http://ohiodplahub.library.ohio.gov:8080/repox/#HOME](http://ohiodplahub.library.ohio.gov:8080/repox/#HOME) in a browser. Log in with the admin username and password (default: admin/admin)
 
+- Go to Administration->Configuration Settings and do the following:
+    - Uncheck "Use SSL Mail Authentication?" (unnecessary)
+    - Set OAI Max List Size to 257 (This evades an obscure bug that will stop records from being retrieved when the number of records sent is a multiple of 750)
+
 
